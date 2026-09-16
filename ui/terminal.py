@@ -41,11 +41,7 @@ def print_wrapped_text(text, indent="c", separator=" "):
     af.print_box("b")
 
 
-def print_wrapped_screen(lst:list):
-    """
-    Imprime la lista de cadena de caracteres dentro de una caja ASCII
-    lst debe ser una lista con strings
-    """
+def print_wrapped_screen(lst):
     af.print_box("t")
     for i, option in enumerate(lst):
         af.print_text(f"[{i+1}]>" + option)
