@@ -236,7 +236,7 @@ def main():
                                    "Recomendar Serie Relacionada": recomendar_relacionado, # Implementar mas adelante
                                    "Recomendar Serie Aleatoria": recomendar_aleatorio,
                                    "Filtrar Por Genero": filtrar_por_genero,
-                                   "Filtrar Por Cantidad De Temporadas": filtrar_por_genero,
+                                   "Filtrar Por Cantidad De Temporadas": filtrar_por_temporadas,
                                    "Filtrar Por Duracion De Capitulo": filtrar_por_duracion_episodio,
                                    "Filtrar Por Edad": filtrar_por_edad,
                                    "Salir":salir,
