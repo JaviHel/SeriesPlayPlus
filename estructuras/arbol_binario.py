@@ -11,7 +11,7 @@ class Node:
 class BST:
     def __init__(self):
         self.root = None
-
+        self.COUNTER = 0
     # ---------- insert ----------
     def insert(self, key, item):
         """Add an item under a key. Repeated keys keep all their items."""
@@ -39,6 +39,8 @@ class BST:
 
     def _search(self, node, key):
         # base case 1: fell off the tree, nothing with this key
+        self.COUNTER += 1 
+        
         if node is None:
             return []
         # base case 2: found the key
@@ -103,7 +105,9 @@ class BST:
         for serie in series:
             self.insert(serie[option], serie[option])
     
-
+    
+    def get_counter(self):
+        return self.COUNTER
 
 
 

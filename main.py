@@ -28,16 +28,15 @@ episodes_bst = BST()
 
 # Carga opciones que su dato es una string(Cadena de caracteres)
 title_bst.load_str(SERIES, "title")
-genre_bst.load_str(SERIES, "genre")
-age_rating_bst.load_str(SERIES, "age_rating")
+#genre_bst.load_str(SERIES, "title")
+#age_rating_bst.load_str(SERIES, "title")
 
 # Carga opciones que su dato es un int(Entero)
-year_bst.load_int(SERIES, "year")
-pop_metrics_bst.load_int(SERIES, "popularity_metrics")
-episode_average_bst.load_int(SERIES, "episode_duration_average")
-seasons_bst.load_int(SERIES, "seasons")
-episodes_bst.load_int(SERIES, "episodes")
-
+#year_bst.load_int(SERIES, "title")
+#pop_metrics_bst.load_int(SERIES, "title")
+#episode_average_bst.load_int(SERIES, "title")
+#seasons_bst.load_int(SERIES, "title")
+#episodes_bst.load_int(SERIES, "title")
 
 
 # JSON RECORDATORIO
@@ -124,17 +123,19 @@ def salir():
 # IMPRIMIR FUNCIONALIDAD DE LAS OPCIONES DE LA PANTALLA PRINCIPAL
 #1
 def buscar_series():
-    """ Imprime si la serie ingresada por el usuario esta en la base de datos """
+    """ Imprime si la serie ingresada por el usuario esta en la base de datos
+        Utiliza el arbol binario para hacer la busqueda
+    """
     # HAY QUE DARLE ESTILO A ESTO
     nombre = preguntar_usuario("INGRESE EL NOMBRE DE LA SERIE (en ingles): ")
     
 #    print("buscando serie... ")
 
-    if filtrar_por(nombre, "title"):
-        imprimir_texto_ensanguchado(f'La serie "{nombre}" SI se encuentra disponible.')
+    serie = title_bst.search(nombre)
+    if len(serie) > 0:
+        imprimir_texto_ensanguchado(f'La serie "{serie[0]}" SI se encuentra disponible.')
     else:
-        imprimir_texto_ensanguchado(f'La serie "{nombre}" NO se encuentra disponible.')
-
+        imprimir_texto_ensanguchado(f'La serie "{nombre}" NO se encuentra disponible.')    
     salir()
 
 
@@ -188,15 +189,11 @@ def filtrar_por_genero():
 #5
 def filtrar_por_temporadas():
     """ Imprime las series que tienen menos o igual cantidad de temporadas
-        utilizando el arbol binario
         que la ingresada por el usuario
     """
     
     
     
-    print("NO IMPLEMENTADO AUN :(")
-    salir()
-
 
 
 #6
@@ -241,6 +238,8 @@ def seleccionar_opcion(user_input:int, method_call_lst:list):
         method_call_lst[user_input-1]()    
     else:  
         print("ESA NO ES UNA OPCION DE LA LISTA")
+
+
 
 
 
