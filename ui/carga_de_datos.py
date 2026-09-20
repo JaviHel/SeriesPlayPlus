@@ -5,6 +5,7 @@ def cargar_json(ruta_archivo):
     with open(ruta_archivo) as f:
         datos = json.load(f)
     return datos
-    
-    
-    
+
+
+
+

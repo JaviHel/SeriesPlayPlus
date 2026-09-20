@@ -1,15 +1,42 @@
 import random, time
-from carga_de_datos import *
-from ascii_frame import *
-
+from ui.carga_de_datos import *
+from ui.ascii_frame import *
+from estructuras.arbol_binario import BST
 
 
 # CONFIGURACION PRINCIPAL
-DATOS = cargar_json("datos/dataset_100.json")
+DATOS = cargar_json("datos/dataset_10.json")
+SERIES = DATOS["series"]
 LOOP = True
 ANCHO_RECUADRO = 60
 af = AsciiFrame(ANCHO_RECUADRO)
 
+# Crear Arbol Binario De Busqueda Para Cada Opcion Del JSON
+#str
+title_bst = BST()
+genre_bst = BST()
+age_rating_bst = BST()
+
+#int
+year_bst = BST()
+pop_metrics_bst = BST()
+episode_average_bst = BST()
+seasons_bst = BST()
+episodes_bst = BST()
+
+
+
+# Carga opciones que su dato es una string(Cadena de caracteres)
+title_bst.load_str(SERIES, "title")
+genre_bst.load_str(SERIES, "genre")
+age_rating_bst.load_str(SERIES, "age_rating")
+
+# Carga opciones que su dato es un int(Entero)
+year_bst.load_int(SERIES, "year")
+pop_metrics_bst.load_int(SERIES, "popularity_metrics")
+episode_average_bst.load_int(SERIES, "episode_duration_average")
+seasons_bst.load_int(SERIES, "seasons")
+episodes_bst.load_int(SERIES, "episodes")
 
 
 
@@ -33,6 +60,7 @@ af = AsciiFrame(ANCHO_RECUADRO)
 
 
 
+
 # FUNCIONES DE IMPRESION EN PANTALLA
 def imprimir_texto_ensanguchado(text, indent="c", separator=" "):
     """ Imprime Texto Dentro De Una Caja ASCII """
@@ -41,13 +69,13 @@ def imprimir_texto_ensanguchado(text, indent="c", separator=" "):
     af.print_box("b")
 
 
-def imprimir_pantalla_ensanguchada(lst):
+def imprimir_pantalla_ensanguchada(lst, indent="l"):
     """ Imprime una lista con "cadena de caracteres" en pantalla
         lst es una lista con cadena de caracteres ["A", "e", "I", "o", "U"]
     """
     af.print_box("t")
     for i, option in enumerate(lst):
-        af.print_text(f"[{i+1}]>" + option)
+        af.print_text(f"[{i+1}]>" + option, indent)
     af.print_box("b")
 
 
@@ -160,8 +188,12 @@ def filtrar_por_genero():
 #5
 def filtrar_por_temporadas():
     """ Imprime las series que tienen menos o igual cantidad de temporadas
+        utilizando el arbol binario
         que la ingresada por el usuario
     """
+    
+    
+    
     print("NO IMPLEMENTADO AUN :(")
     salir()
 
@@ -193,7 +225,6 @@ def filtrar_por_edad():
 # FUNCIONES DE INPUT Y SELECCION
 def preguntar_usuario(message="text", type_str=True):
     """ Imprime el mensaje en pantalla para que el usuario vea
-        
     """
     if type_str:
         return input(message)
@@ -216,15 +247,7 @@ def seleccionar_opcion(user_input:int, method_call_lst:list):
 
 
 
-
-############################# IMPORTANTE ############################# 
-
-# CUANDO TERMINAMOS DE CONSTRUIR LA FUNCION *MAIN* AL FINAL,
-# LA MOVEMOS A UN ARCHIVO *MAIN* EN LA CARPETA PRINCIPAL DEL PROYECTO
-
-############################# IMPORTANTE ############################# 
-
-def main():
+def main():   
     # Estas variables y titulos deberian ir cada una dentro de una funcion
     # Variables de los titulos y opciones de cada pantalla
     MENSAJE_PANTALLA_PRINCIPAL = "SELECCIONE UNA OPCION DEL MENU: " # mensaje al usuario #1
@@ -236,7 +259,7 @@ def main():
                                    "Recomendar Serie Relacionada": recomendar_relacionado, # Implementar mas adelante
                                    "Recomendar Serie Aleatoria": recomendar_aleatorio,
                                    "Filtrar Por Genero": filtrar_por_genero,
-                                   "Filtrar Por Cantidad De Temporadas": filtrar_por_genero,
+                                   "Filtrar Por Cantidad De Temporadas": filtrar_por_temporadas,
                                    "Filtrar Por Duracion De Capitulo": filtrar_por_duracion_episodio,
                                    "Filtrar Por Edad": filtrar_por_edad,
                                    "Salir":salir,
