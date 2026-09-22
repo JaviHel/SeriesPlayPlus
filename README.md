@@ -1,4 +1,4 @@
-# Series Play 🍿
+# SeriesPlay++
 
 Esta aplicacion esta pensada para **personas con poco tiempo**
 ---
@@ -11,8 +11,6 @@ python main.py
 ```
 ---
 ## integrantes
-* *Daiana Calderon*
-* *Javier Helguera*
 * *Camila Torres*
-* *Antonela Bruno*
+* *Javier Helguera*
 

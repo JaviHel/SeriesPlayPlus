@@ -106,6 +106,12 @@ class BST:
             self.insert(serie[option], serie[option])
     
     
+    def load(self, serie, option="title"):
+        """ Carga las opciones  """
+        for title in serie:
+            self.insert(title.lower(), option)
+    
+    
     def get_counter(self):
         return self.COUNTER
 
